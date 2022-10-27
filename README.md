@@ -1,3 +1,5 @@
+> Update: You should use `ipfs://` instead of `https://ipfs.io/` for your tokenURI
+
 # nft-mix
 
 <br/>
@@ -55,7 +57,7 @@ Set your `WEB3_INFURA_PROJECT_ID`, and `PRIVATE_KEY` [environment variables](htt
 
 You can get a `WEB3_INFURA_PROJECT_ID` by getting a free trial of [Infura](https://infura.io/). At the moment, it does need to be infura with brownie. You can find your `PRIVATE_KEY` from your ethereum wallet like [metamask](https://metamask.io/). 
 
-You'll also need testnet rinkeby ETH and LINK. You can get LINK and ETH into your wallet by using the [rinkeby faucets located here](https://docs.chain.link/docs/link-token-contracts#rinkeby). If you're new to this, [watch this video.](https://www.youtube.com/watch?v=P7FX_1PePX0)
+You'll also need testnet rinkeby ETH and LINK. You can get LINK and ETH into your wallet by using the [rinkeby faucets located here](https://faucets.chain.link/rinkeby). If you're new to this, [watch this video.](https://www.youtube.com/watch?v=P7FX_1PePX0)
 
 You can add your environment variables to the `.env` file:
 
@@ -64,14 +66,19 @@ export WEB3_INFURA_PROJECT_ID=<PROJECT_ID>
 export PRIVATE_KEY=<PRIVATE_KEY>
 ```
 
-AND THEN RUN `source .env` TO ACTIVATE THE ENV VARIABLES
-(You'll need to do this everytime you open a new terminal, or [learn how to set them easier](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html))
+Then, make sure your `brownie-config.yaml` has:
+
+```
+dotenv: .env
+```
+
+You can also [learn how to set environment variables easier](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html)
 
 
 Or you can run the above in your shell. 
 
 
-# Useage
+# Usage
 
 There are 2 types of NFTs here. 
 1. `SimpleCollectibles.sol`
@@ -107,13 +114,11 @@ brownie run scripts/advanced_collectible/create_metadata.py --network rinkeby
 brownie run scripts/advanced_collectible/set_tokenuri.py --network rinkeby
 ```
 
-## Verify on Etherscan
+# Verify on Etherscan
 
-> Looking for help fixing this!
+The simple contract and the advanced contract can be verified if you just set your `ETHERSCAN_TOKEN`. 
 
-Currently, the advanced collectibles contract has an issue with ERC721 and the Chainlink contracts, so they have be verified manually. However, the simple contract can be verified if you just set your `ETHERSCAN_TOKEN`. 
-
-### Misc
+## Misc
 There are some helpful scripts in `helpful_scripts.py`.
 
 # Viewing on OpenSea

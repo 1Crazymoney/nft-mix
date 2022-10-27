@@ -19,7 +19,7 @@ breed_to_image_uri = {
 
 def main():
     print("Working on " + network.show_active())
-    advanced_collectible = AdvancedCollectible[len(AdvancedCollectible) - 1]
+    advanced_collectible = AdvancedCollectible[-1]
     number_of_advanced_collectibles = advanced_collectible.tokenCounter()
     print(
         "The number of tokens you've deployed is: "
@@ -81,7 +81,7 @@ def upload_to_ipfs(filepath):
                                  files={"file": image_binary})
         ipfs_hash = response.json()["Hash"]
         filename = filepath.split("/")[-1:][0]
-        image_uri = "https://ipfs.io/ipfs/{}?filename={}".format(
+        image_uri = "ipfs://{}?filename={}".format(
             ipfs_hash, filename)
         print(image_uri)
     return image_uri
